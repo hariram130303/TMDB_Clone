@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import { useNavigate } from "react-router-dom";
+import Layout from "../components/Layout";
 import Pagination from "../components/Pagination";
 import styles from "../styles/DirectorsList.module.css";
 
@@ -10,18 +11,6 @@ export default function DirectorsList() {
   const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
-
-  const menu = [
-    { label: "Actors - 21,830", path: "/actors" },
-    { label: "Scenes - 507,852", path: "/scenes" },
-    { label: "Upcoming Scenes - 133", path: "/upcoming" },
-    { label: "Movies - 63,458", path: "/movies" },
-    { label: "Movie Series - 6,963", path: "/series" },
-    { label: "Directors - 1,493", path: "/directors" },
-    { label: "Studios - 1,493", path: "/studios" },
-    { label: "Genres - 229", path: "/genres" },
-    { label: "Tags - 229", path: "/tags" },
-  ];
 
   const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -98,72 +87,37 @@ export default function DirectorsList() {
 
   const current = filtered.slice((page - 1) * perPage, page * perPage);
 
-  return (
-    <div className={styles.pageWrapper}>
-      {/* PAGE HEADER */}
-      <div className={styles.pageHeader}>Movie Directors</div>
-
-      {/* BODY */}
-      <div className={styles.body}>
-        {/* LEFT SIDEBAR */}
-        <aside className={styles.leftSidebar}>
-          <div className={styles.sideBox}>
-            {menu.map((m, i) => (
-              <div
-                key={i}
-                className={styles.sideItem}
-                onClick={() => navigate(m.path)}
-              >
-                {m.label}
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.storeBox}>Store18 - Official Store</div>
-        </aside>
-
-        {/* CENTER */}
-        <main className={styles.centerContent}>
-          <div className={styles.resultBar}>
-            Showing {filtered.length.toLocaleString()} results...
-          </div>
-
-          <div className={styles.topRow}>
-            <h2>{filtered.length} Directors</h2>
-          </div>
-
-          <div className={styles.list}>
-            {current.map((d) => (
-              <div
-                key={d.id}
-                className={styles.row}
-                onClick={() =>
-                  navigate(`/director/${encodeURIComponent(d.name)}`)
-                }
-              >
-                #{String(d.id).padStart(4, "0")} - {d.name}
-                <span className={styles.dashes}> ---- </span>
-                {d.count} {d.count === 1 ? "movie" : "movies"}
-              </div>
-            ))}
-          </div>
-
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            onPage={setPage}
-          />
-        </main>
-
-        {/* RIGHT */}
-        <aside className={styles.rightSidebar}>
-          <div className={styles.aboutBox}>
-            <div className={styles.aboutTitle}>About TMDB.com</div>
-
-            <p>Browse all movie directors available in the database.</p>
-          </div>
-        </aside>
-      </div>
+ return (
+  <Layout
+    title="Movie Directors"
+    results={filtered.length}
+    pagination={
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        onPage={setPage}
+      />
+    }
+  >
+    <div className={styles.topRow}>
+      <h2>{filtered.length.toLocaleString()} Directors</h2>
     </div>
-  );
+
+    <div className={styles.list}>
+      {current.map((d) => (
+        <div
+          key={d.id}
+          className={styles.row}
+          onClick={() =>
+            navigate(`/director/${encodeURIComponent(d.name)}`)
+          }
+        >
+          #{String(d.id).padStart(4, "0")} - {d.name}
+          <span className={styles.dashes}> ---- </span>
+          {d.count} {d.count === 1 ? "movie" : "movies"}
+        </div>
+      ))}
+    </div>
+  </Layout>
+);
 }

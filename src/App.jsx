@@ -15,6 +15,7 @@ import MovieDetails from "./pages/MovieDetails";
 import ActorProfile from "./pages/ActorProfile";
 import MoviePhotos from "./pages/MoviePhotos";
 import Actors from "./pages/Actors";
+import MovieSeries from "./pages/MovieSeries";
 import SlideMenu from "./components/SlideMenu";
 
 
@@ -57,6 +58,7 @@ const handleMenuClick = () => {
             <Route path="/actor/:id" element={<ActorProfile />} />
             <Route path="/movie/:id/images" element={<MoviePhotos />} />
             <Route path="/actors" element={<Actors />} />
+            <Route path="/series" element={<MovieSeries />} />
           </Routes>
         </main>
       </div>

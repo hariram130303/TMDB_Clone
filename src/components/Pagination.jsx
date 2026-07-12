@@ -86,6 +86,9 @@ export default function Pagination({
             value={jumpPage}
             onChange={(e) => setJumpPage(e.target.value)}
           />
+          <button className={styles.toolBtn} onClick={handleJump}>
+            Go
+          </button>
           …
         </div>
 

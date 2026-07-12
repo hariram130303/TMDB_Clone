@@ -32,12 +32,12 @@ export default function Sidebar() {
   },
   {
     label: "Upcoming Movies",
-    count: "",
+    count: counts.upcoming_movies.toLocaleString(),
     path: "/upcoming",
   },
   {
     label: "Movie Series",
-    count: "",
+    count: counts.movie_series.toLocaleString(),
     path: "/series",
   },
   {
@@ -57,7 +57,7 @@ export default function Sidebar() {
   },
   {
     label: "Tags",
-    count: "",
+    count: counts.keywords.toLocaleString(),
     path: "/tags",
   },
 ];
@@ -75,8 +75,18 @@ useEffect(() => {
     const directorSet = new Set();
     const genreSet = new Set();
     const studioSet = new Set();
+    const movieSeriesSet = new Set();
+    const keywordSet = new Set();
 
     let movieCount = 0;
+    let upcomingMovieCount = 0;
+
+    // Fetch upcoming Hindi movies
+    const upcomingData = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?with_original_language=hi&include_adult=true&sort_by=release_date.asc&release_date.gte=${new Date().toISOString().split('T')[0]}`,
+      { headers }
+    ).then((r) => r.json());
+    upcomingMovieCount = upcomingData.total_results;
 
     for (let page = 1; page <= 10; page++) {
       const movieData = await fetch(
@@ -113,6 +123,20 @@ useEffect(() => {
         details.production_companies?.forEach((company) =>
           studioSet.add(company.id)
         );
+
+        if (details.belongs_to_collection?.id) {
+          movieSeriesSet.add(details.belongs_to_collection.id);
+        }
+
+        // Keywords
+        const keywords = await fetch(
+          `https://api.themoviedb.org/3/movie/${movie.id}/keywords`,
+          { headers }
+        ).then((r) => r.json());
+
+        keywords.keywords?.forEach((keyword) =>
+          keywordSet.add(keyword.id)
+        );
       }
     }
 
@@ -123,13 +147,12 @@ useEffect(() => {
         directors: directorSet.size,
         studios: studioSet.size,
         genres: genreSet.size,
-        movie_series: 0,
-        upcoming_movies: 0,
-        keywords: 0,
+        movie_series: movieSeriesSet.size,
+        upcoming_movies: upcomingMovieCount,
+        keywords: keywordSet.size,
       });
     }
   }
-
   loadCounts();
 
   return () => {
