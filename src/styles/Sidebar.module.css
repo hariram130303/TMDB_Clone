@@ -1,0 +1,97 @@
+.sidebar {
+  width: 180px;
+  min-width: 180px;
+  background: #f2f2f2;
+  border-right: 3px solid #dadada;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.sideBox {
+  width: 100%;
+  min-height: 900px;
+  background: #f2f2f2;
+}
+
+.sideSpacer {
+  height: 6px;
+}
+
+/* MENU ITEMS */
+
+.sideItem {
+  padding: 8px;
+  background: #e1e1e1;
+  border-bottom: 1px solid grey;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.sideItem strong {
+  font-weight: 700;
+}
+
+.sideItem:hover {
+  background: #f6f4d0;
+}
+
+/* Active item (optional) */
+
+.activeItem {
+  background: #d7d7d7;
+}
+
+/* STORE */
+
+.storeBox {
+  margin-top: 10px;
+  padding: 8px;
+  background: #ffcccb;
+  border-bottom: 1px solid grey;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.storeBox:hover {
+  background: #ffc2c2;
+}
+
+/* FILTER OPTIONS */
+
+.filterBox {
+  margin-top: 25px;
+  margin-left: 8px;
+
+  width: 170px;
+
+  background: #e6e6e6;
+
+  border: 3px solid #dadada;
+  border-right: 0;
+
+  border-radius: 12px 0 0 12px;
+
+  padding: 8px;
+
+  box-sizing: border-box;
+}
+
+.filterTitle {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.filterOption {
+  padding: 5px 0;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.filterOption:hover {
+  color: #8b0000;
+}

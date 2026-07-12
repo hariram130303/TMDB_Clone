@@ -1,0 +1,82 @@
+.wrapper {
+  background: #f3f3f3;
+  border-top: 1px solid #bbb;
+  padding: 12px 0;
+}
+
+/* MAIN PAGINATION BAR */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.btn {
+  padding: 6px 14px;
+  border: 1px solid #cfcfcf;
+  background: #f6fbff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.page {
+  padding: 6px 12px;
+  border: 1px solid #d0d0d0;
+  background: #ffe6e6;
+  cursor: pointer;
+}
+
+.active {
+  background: #ffe6e6;
+  border-color: #cc0000;
+  color: #cc0000;
+}
+
+.ellipsis {
+  padding: 6px 10px;
+  color: #F4D5D5;
+}
+
+/* SECOND ROW */
+.tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 0;
+  background: #f9f9f9;
+}
+
+.toolBtn {
+  padding: 6px 16px;
+  border: 1px solid #ccc;
+  background: #f6fbff;
+  cursor: pointer;
+}
+
+.jump {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.jump input {
+  width: 100px;
+  padding: 4px 6px;
+  height: 20px;
+  background-color: #ffffff;
+}
+
+.jump button {
+  padding: 4px 10px;
+  border: 1px solid #aaa;
+  background: #fff;
+  cursor: pointer;
+}

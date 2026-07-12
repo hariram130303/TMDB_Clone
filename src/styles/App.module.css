@@ -1,0 +1,52 @@
+/* App.module.css */
+/* Gray background */
+.pageWrapper {
+  min-height: 100vh;
+  background: #bdbdbd;
+  display: flex;
+  justify-content: center;
+    padding-top: 82px;
+
+}
+
+/* White page */
+.page {
+  width: 1200px;
+  background: #fff;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+}
+
+/* BODY below topbar */
+body {
+  margin: 0;
+  background: #9a9a9a;
+}
+
+.page {
+  width: 1200px;
+  min-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* Sidebar */
+.left {
+  background: #f2f2f2;
+  border-right: 1px solid #ccc;
+}
+
+/* Right panel */
+.right {
+  background: #f0f0f0;
+  border-left: 1px solid #bbb;
+  padding: 10px;
+}
+
+.aboutBox {
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+}

@@ -1,0 +1,245 @@
+.page{
+    width:1200px;
+    margin:auto;
+    background:#e6e6e6;
+    border:8px solid #808080;
+}
+
+.pageHeader{
+    background:#fff8f8;
+    border-bottom:3px solid #DADADA;
+    padding:12px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.mainArea{
+    display:flex;
+    align-items:flex-start;
+}
+
+.body{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:3px;
+    flex:1;
+}
+.main{
+    background:white;
+}
+
+.resultsBar{
+    background:#808080;
+    color:white;
+    padding:7px 10px;
+    font-weight:bold;
+}
+
+.filterPanel{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    padding:8px;
+    border-bottom:1px solid #ddd;
+}
+
+.expandBar{
+    background:#7b0087;
+    color:#fff;
+    text-align:center;
+    padding:1px;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
+    height:15px;
+}
+
+.movieHeader{
+    padding:12px;
+    font-size:20px;
+    background:#fff8f8;
+    border-top:1px solid #ddd;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    padding:15px;
+}
+
+.showMore{
+    width:100%;
+    background:#d9d9d9;
+    border:none;
+    padding:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.rightSidebar{
+    width:250px;
+    background:#fff;
+    border:3px solid #bcbcbc;
+    flex-shrink:0;
+}
+
+.aboutBox{
+    background:#fff;
+    border:1px solid #bcbcbc;
+    border-top:4px solid #111;
+    margin-bottom:8px;
+}
+
+.aboutSection{
+    background:#e5e5e5;
+    margin-bottom:8px;
+}
+
+.aboutHeader{
+    border-top:3px solid #000;
+    border-bottom:2px dashed silver;
+    padding:12px;
+    font-size:20px;
+    font-weight:bold;
+    background:#e5e5e5;
+}
+
+.aboutTitle{
+    font-weight:bold;
+    border-bottom:1px dashed #ccc;
+    padding-bottom:8px;
+    margin-bottom:10px;
+}
+
+.aboutContent{
+    padding:10px;
+    font-size:14px;
+    line-height:1.45;
+}
+
+.aboutContent p{
+    margin:12px;
+    font-size:14px;
+    line-height:1.4;
+    margin-bottom:14px;
+}
+
+.brand{
+    color:#8b0000;
+    font-weight:bold;
+}
+
+.aboutContent p:nth-child(2){
+    border-top:1px solid gray;
+    padding-top:10px;
+}
+
+.aboutContent a{
+    color:#555;
+    text-decoration:underline;
+}
+
+.aboutContent a:hover{
+    color:#000;
+}
+
+.contact{
+    color:#666;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.bottomPanel{
+    height:80px;
+    background:#e6e6e6;
+    border-top:3px solid blue;
+    border-bottom:3px solid #dadada;
+}
+
+.adBox{
+    height:260px;
+    background:#f4f4f4;
+    border:1px solid #bcbcbc;
+    border-top:4px solid #2448ff;
+}
+
+.filterWrapper{
+    border-bottom:1px solid #ccc;
+}
+
+.resultBar{
+    background:#808080;
+    color:#fff;
+    font-weight:bold;
+    padding:6px 10px;
+    border-bottom:2px solid #d32027;
+}
+
+.filterPanel{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+
+    padding:12px;
+    background:#fff;
+}
+
+.filterColumn h4{
+    margin:0 0 8px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.filterList{
+    height:150px;
+
+    overflow-y:auto;
+
+    padding-right:5px;
+
+    font-size:15px;
+    line-height:1.6;
+}
+
+.filterList::-webkit-scrollbar{
+    width:8px;
+}
+
+.filterList::-webkit-scrollbar-track{
+    background:#eee;
+}
+
+.filterList::-webkit-scrollbar-thumb{
+    background:#999;
+    border-radius:10px;
+}
+
+.filterList div{
+    cursor:pointer;
+    padding:2px 0;
+}
+
+.filterList div:hover{
+    color:#8b0000;
+}
+
+.expandBar{
+    background:#800080;
+    color:#fff;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    padding:3px;
+
+    cursor:pointer;
+
+    text-transform:lowercase;
+}
+
+.expandBar:hover{
+    background:#650065;
+}
+

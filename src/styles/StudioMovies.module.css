@@ -1,0 +1,116 @@
+/* PAGE LAYOUT (same as homepage) */
+.pageWrapper {
+  width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr 220px;
+  gap: 10px;
+  background: #e6e6e6;
+  padding: 10px;
+}
+
+/* LEFT SIDEBAR */
+.leftSidebar {
+  background: #f1f1f1;
+  border: 1px solid #bcbcbc;
+}
+
+.sideBox {
+  border-bottom: 1px solid #bcbcbc;
+}
+
+.sideItem {
+  padding: 8px 10px;
+  border-bottom: 1px solid grey;
+  font-size: 14px;
+  background: #e1e1e1;
+  cursor: pointer;
+}
+
+.sideItem:hover {
+  background: #e2e2e2;
+}
+
+/* STORE BOX */
+.storeBox {
+  background: #f2c6c6;
+  padding: 8px;
+  font-weight: bold;
+  border-top: 1px solid #bcbcbc;
+}
+
+/* CENTER */
+.centerContent {
+  background: #fff;
+  border: 1px solid #bcbcbc;
+}
+
+/* HEADER */
+.mainHeader {
+  padding: 8px 12px;
+  border-bottom: 2px solid #c02125;
+  font-weight: bold;
+  background: #f5f5f5;
+}
+
+/* SECTION */
+.movieSection {
+  padding: 10px;
+}
+
+.movieHeader {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* GRID (same as homepage) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* TITLE */
+.name {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* COUNT */
+.count {
+  text-align: center;
+  color: #555;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* RIGHT SIDEBAR */
+.rightSidebar {
+  background: #f1f1f1;
+  border: 1px solid #bcbcbc;
+}
+
+.aboutBox {
+  padding: 10px;
+  font-size: 13px;
+}
+
+.aboutTitle {
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 6px;
+}

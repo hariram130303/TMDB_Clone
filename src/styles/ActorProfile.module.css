@@ -1,0 +1,185 @@
+.pageWrapper {
+  width: 1200px;
+  margin: 20px auto;
+  background: #e6e6e6;
+  padding: 10px;
+}
+
+.centerContent {
+  background: #fff;
+  border: 1px solid #bcbcbc;
+}
+
+.mainHeader {
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border-bottom: 2px solid #c02125;
+  font-weight: bold;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 25px;
+  padding: 20px;
+}
+
+/* LEFT */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileImg {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.sideSection {
+  margin-top: 15px;
+}
+
+.sideSection p {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.aliasList {
+  list-style: none;
+  padding: 0;
+}
+
+.aliasList li {
+  margin-bottom: 5px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.socialIcons a {
+  color: #333;
+  font-size: 22px;
+}
+
+.socialIcons a:hover {
+  color: #01b4e4;
+}
+
+/* RIGHT */
+
+.main {
+  min-width: 0;
+}
+
+.name {
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+.bio {
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* KNOWN FOR */
+
+/* KNOWN FOR */
+.knownForRow {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 10px 0 15px;
+
+  scrollbar-width: thin;           /* Firefox */
+  scrollbar-color: #888 #ddd;
+}
+
+.knownForRow::-webkit-scrollbar {
+  height: 10px;
+}
+
+.knownForRow::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+.knownForRow::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.knownForRow::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.movieCard {
+  flex: 0 0 140px;      /* Fixed width so cards don't shrink */
+  cursor: pointer;
+}
+
+.movieCard img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.movieCard p {
+  margin: 0;
+  padding: 8px;
+  text-align: center;
+  background: #666;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* FILMOGRAPHY */
+
+.filmography {
+  border: 1px solid #ddd;
+}
+
+.creditRow {
+  display: grid;
+  grid-template-columns: 70px 30px 1fr;
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.creditRow:hover {
+  background: #f5f5f5;
+}
+
+.year {
+  font-weight: bold;
+  color: #444;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.movieTitle {
+  font-weight: bold;
+}
+
+.character {
+  color: #777;
+  margin-top: 3px;
+  font-size: 13px;
+}
+

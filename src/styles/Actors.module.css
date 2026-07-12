@@ -1,0 +1,187 @@
+/* ActorsPage.module.css */
+
+/* PAGE LAYOUT */
+.pageWrapper {
+  width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 190px 1.2fr 190px;
+  gap: 10px;
+  background: #e6e6e6;
+  padding: 10px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* LEFT SIDEBAR */
+.leftSidebar {
+  background: #f1f1f1;
+  border: 1px solid #bcbcbc;
+}
+
+.sideBox {
+  border-bottom: 1px solid #bcbcbc;
+}
+
+.sideItem {
+  padding: 8px 10px;
+  border-bottom: 1px solid grey;
+  font-size: 14px;
+  background: #e1e1e1;
+  cursor: pointer;
+}
+
+.sideItem:hover {
+  background: #f6f4d0;
+}
+
+.storeBox {
+  background: #f2c6c6;
+  padding: 8px;
+  font-weight: bold;
+  border-top: 1px solid #bcbcbc;
+}
+
+/* CENTER CONTENT */
+.centerContent {
+  background: #fff;
+  border: 1px solid #bcbcbc;
+}
+
+.mainHeader {
+  padding: 8px 12px;
+  border-bottom: 2px solid #c02125;
+  font-weight: bold;
+  background: #f5f5f5;
+  font-size: 20px;
+}
+
+/* SECTION */
+.movieSection {
+  padding: 10px;
+}
+
+.movieHeader {
+  font-size: 22px;
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+
+/* GRID = 4 PER ROW */
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* LINK */
+.actorLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* CARD */
+.actorCard {
+  border: 1px solid #bcbcbc;
+  background: #f7f7f7;
+  transition: 0.2s;
+}
+
+.actorCard:hover {
+  background: #fff9d7;
+}
+
+/* TOP */
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  font-size: 12px;
+  border-bottom: 1px solid #ccc;
+  background: #f7f7f7;
+}
+
+.actorId {
+  font-weight: bold;
+  color: #000;
+}
+
+.actorDate {
+  color: #c02125;
+}
+
+.navBadge {
+  background: red;
+  color: white;
+  padding: 1px 4px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* IMAGE */
+.imageWrap {
+  width: 100%;
+  aspect-ratio: 1.5 / 2;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.actorImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* NAME */
+.actorName {
+  background: #7d7d7d;
+  color: white;
+  text-align: center;
+  padding: 8px 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* META */
+.actorMeta {
+  text-align: center;
+  padding: 10px 4px;
+  font-size: 14px;
+  color: black;
+}
+/* NAME */
+.actorName {
+  background: #8a8a8a;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* META */
+.actorMeta {
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  min-height: 52px;
+}
+
+/* RIGHT SIDEBAR */
+.rightSidebar {
+  background: #f1f1f1;
+  border: 1px solid #bcbcbc;
+}
+
+.aboutBox {
+  padding: 10px;
+  font-size: 13px;
+}
+
+.aboutTitle {
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 6px;
+}
