@@ -249,9 +249,9 @@ Features include:
 
 ## 👨‍💻 Author
 
-**Sneha Hari**
+**Hari Ram**
 
-GitHub: https://github.com/ThogataSneha-15
+GitHub: https://github.com/hariram130303
 
 ---
 
