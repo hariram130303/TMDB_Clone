@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import Pagination from "../components/Pagination";
-import styles from "../styles/MovieSeries.module.css";
+import styles from "../styles/MovieSeriesList.module.css";
 
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
-export default function MovieSeries() {
+export default function MovieSeriesList() {
   const [collections, setCollections] = useState([]);
   const [page, setPage] = useState(1);
 

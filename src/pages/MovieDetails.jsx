@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchYouTubeTrailer } from "../utils/youtube";
 import styles from "../styles/MovieDetails.module.css";
 
@@ -12,60 +8,84 @@ export default function MovieDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const movie = state?.movie;
+  const openGallery = state?.openGallery;
 
   const [details, setDetails] = useState(null);
   const [credits, setCredits] = useState(null);
+  const [galleryImages, setGalleryImages] = useState({
+    posters: [],
+    backdrops: [],
+  });
+  const [currentImage, setCurrentImage] = useState(0);
 
   const [ytTrailer, setYtTrailer] = useState(null);
   const [playTrailer, setPlayTrailer] = useState(false);
 
   const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
-  const [activeGallery, setActiveGallery] = useState(null);
+  const [activeGallery, setActiveGallery] = useState(
+    openGallery === 0 ? 0 : null,
+  );
+
+  const images =
+    activeGallery === 0 ? galleryImages.posters : galleryImages.backdrops;
+  
+
+  function toggleGallery(id) {
+    setActiveGallery((prev) => (prev === id ? null : id));
+    setCurrentImage(0);
+  }
 
   function goToActor(actor) {
     navigate(`/actor/${actor.id}`, {
       state: { actor },
     });
   }
-  function toggleGallery(id) {
-    setActiveGallery((prev) => (prev === id ? null : id));
-  }
 
+  
   useEffect(() => {
-  async function load() {
-    const movieId = movie?.id || id;
+    async function load() {
+      const movieId = movie?.id || id;
 
-    if (!movieId) return;
+      if (!movieId) return;
 
-    const headers = {
-      Authorization: `Bearer ${TMDB_TOKEN}`,
-      accept: "application/json",
-    };
+      const headers = {
+        Authorization: `Bearer ${TMDB_TOKEN}`,
+        accept: "application/json",
+      };
 
-    const d = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}`,
-      { headers }
-    ).then((r) => r.json());
+      const d = await fetch(`https://api.themoviedb.org/3/movie/${movieId}`, {
+        headers,
+      }).then((r) => r.json());
 
-    const c = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits`,
-      { headers }
-    ).then((r) => r.json());
+      const c = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/credits`,
+        { headers },
+      ).then((r) => r.json());
 
-    setDetails(d);
-    setCredits(c);
+      const imagesResponse = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/images`,
+        { headers },
+      ).then((r) => r.json());
 
-    const yt = await fetchYouTubeTrailer(
-      d.title,
-      d.release_date?.slice(0, 4)
-    );
+      setDetails(d);
+      setCredits(c);
+      setGalleryImages({
+        posters: imagesResponse.posters || [],
+        backdrops: imagesResponse.backdrops || [],
+      });
 
-    if (yt) setYtTrailer(yt);
-  }
+      const yt = await fetchYouTubeTrailer(
+        d.title,
+        d.release_date?.slice(0, 4),
+      );
 
-  load();
-}, [movie, id, TMDB_TOKEN]);
+      if (yt) setYtTrailer(yt);
+    }
+
+    load();
+    
+  }, [movie, id, TMDB_TOKEN]);
 
   if (!details) return null;
 
@@ -79,7 +99,11 @@ export default function MovieDetails() {
         <div className={styles.leftSidebar}>
           {/* GALLERY CONTAINER */}
           <div className={styles.galleryContainer}>
-            <div className={styles.galleryHeader}>Galleries: [ 8 images ]</div>
+            <div className={styles.galleryHeader}>
+              Galleries: [{" "}
+              {galleryImages.posters.length + galleryImages.backdrops.length}{" "}
+              images ]
+            </div>
 
             <div
               className={`${styles.galleryBox} ${
@@ -89,7 +113,10 @@ export default function MovieDetails() {
             >
               <div className={styles.galleryRow}>
                 <span className={styles.galleryName}>Gallery #0</span>
-                <span className={styles.galleryMeta}>Primary 1</span>
+
+                <span className={styles.galleryMeta}>
+                  Posters {galleryImages.posters.length}
+                </span>
               </div>
             </div>
 
@@ -101,7 +128,10 @@ export default function MovieDetails() {
             >
               <div className={styles.galleryRow}>
                 <span className={styles.galleryName}>Gallery #1</span>
-                <span className={styles.galleryMeta}>Videostills 7</span>
+
+                <span className={styles.galleryMeta}>
+                  Backdrops {galleryImages.backdrops.length}
+                </span>
               </div>
             </div>
           </div>
@@ -111,13 +141,14 @@ export default function MovieDetails() {
             <div className={styles.galleryContentBox}>
               <div
                 className={styles.closeGallery}
-                onClick={() => setActiveGallery(null)}
+                onClick={() => {
+                  setActiveGallery(null);
+                  setCurrentImage(0);
+                }}
               >
-                Close Photos/Videostills
+                Close Posters/Backdrops
                 <div>[x]</div>
               </div>
-
-              {/* Your images or content here */}
             </div>
           )}
         </div>
@@ -134,32 +165,74 @@ export default function MovieDetails() {
 
           {/* TRAILER */}
           <div className={styles.trailerBox}>
-            <div className={styles.trailerInner}>
-              {ytTrailer ? (
-                playTrailer ? (
-                  <iframe
-                    className={styles.trailerPlayer}
-                    src={`https://www.youtube.com/embed/${ytTrailer.id}?autoplay=1`}
-                    title="YouTube Trailer"
-                    allowFullScreen
-                  />
-                ) : (
-                  <div
-                    className={styles.trailerThumbWrapper}
-                    onClick={() => setPlayTrailer(true)}
-                  >
-                    <img
-                      src={ytTrailer.thumbnail}
-                      alt=""
-                      className={styles.trailerThumb}
+            {activeGallery === null ? (
+              <div className={styles.trailerInner}>
+                {ytTrailer ? (
+                  playTrailer ? (
+                    <iframe
+                      className={styles.trailerPlayer}
+                      src={`https://www.youtube.com/embed/${ytTrailer.id}?autoplay=1`}
+                      title="Trailer"
+                      allowFullScreen
                     />
-                    <div className={styles.playOverlay}>▶</div>
-                  </div>
-                )
-              ) : (
-                <div>No trailer</div>
-              )}
-            </div>
+                  ) : (
+                    <div
+                      className={styles.trailerThumbWrapper}
+                      onClick={() => setPlayTrailer(true)}
+                    >
+                      <img
+                        src={ytTrailer.thumbnail}
+                        alt=""
+                        className={styles.trailerThumb}
+                      />
+                      <div className={styles.playOverlay}>▶</div>
+                    </div>
+                  )
+                ) : (
+                  <div>No Trailer Available</div>
+                )}
+              </div>
+            ) : (
+              <div className={styles.galleryViewer}>
+                {images.length > 0 ? (
+                  <>
+                    <button
+                      className={styles.arrowLeft}
+                      onClick={() =>
+                        setCurrentImage((prev) =>
+                          prev === 0 ? images.length - 1 : prev - 1,
+                        )
+                      }
+                    >
+                      ❮
+                    </button>
+
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${images[currentImage].file_path}`}
+                      alt=""
+                      className={styles.galleryImage}
+                    />
+
+                    <button
+                      className={styles.arrowRight}
+                      onClick={() =>
+                        setCurrentImage((prev) =>
+                          prev === images.length - 1 ? 0 : prev + 1,
+                        )
+                      }
+                    >
+                      ❯
+                    </button>
+
+                    <div className={styles.imageCounter}>
+                      {currentImage + 1} / {images.length}
+                    </div>
+                  </>
+                ) : (
+                  <div className={styles.galleryEmpty}>No images available</div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* INFO */}

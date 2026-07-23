@@ -21,6 +21,10 @@ export default function Sidebar() {
 
   const menu = [
   {
+    label: "Home",
+    path: "/",
+  },
+  {
     label: "Actors",
     count: counts.actors.toLocaleString(),
     path: "/actors",

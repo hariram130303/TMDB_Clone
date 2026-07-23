@@ -22,9 +22,14 @@ export default function MovieCard({
           #{id} <span className={styles.date}>{date}</span>
         </div>
         <div className={styles.photos} onClick={(e) => e.stopPropagation()}>
-          <Link to={`/movie/${id}/images`} className={styles.photoLink}>
-            📷 {count}
-          </Link>
+<Link
+  to={`/movie/${id}`}
+  state={{ openGallery: 0 }}
+  className={styles.photoLink}
+  onClick={(e) => e.stopPropagation()}
+>
+  📷 {count}
+</Link>
         </div>
       </div>
 
